@@ -1,92 +1,109 @@
+// /api/contact/route.js
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
-export async function POST(req) {
-  try {
-    const data = await req.json();
+// Create transporter once (cached between function calls)
+let transporter;
 
-    const required = [
-      "fullName",
-      "email",
-      "phone",
-      "unitType",
-      "buyTimeline",
-      "message",
-    ];
-    for (const k of required) {
-      if (!data[k]) {
-        return NextResponse.json(
-          { success: false, message: "Missing fields" },
-          { status: 400 },
-        );
-      }
-    }
-
-    const transporter = nodemailer.createTransport({
+function createTransporter() {
+  if (!transporter) {
+    transporter = nodemailer.createTransport({
       host: process.env.EMAIL_HOST,
-      port: Number(process.env.EMAIL_PORT || "465"),
-      secure: String(process.env.EMAIL_SECURE || "true") === "true",
+      port: Number(process.env.EMAIL_PORT),
+      secure: process.env.EMAIL_SECURE === "true",
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
       },
+      // Balanced pooling
+      pool: true,
+      maxConnections: 3,
+      maxMessages: 50,
     });
+  }
+  return transporter;
+}
 
-    const adminEmail = process.env.ADMIN_EMAIL;
+export async function POST(req) {
+  const start = Date.now();
 
-    const subject = `New Consultation Request - ${data.unitType}`;
+  try {
+    const data = await req.json();
+    const { fullName, email, phone, unitType, buyTimeline, message } = data;
 
-    const html = `
-      <div style="font-family: Arial; max-width: 640px; margin: 0 auto; padding: 20px;">
-        <h2 style="margin:0 0 10px;color:#111;">New Consultation Request</h2>
-        <div style="padding:14px;border:1px solid #c9a26a;border-radius:12px;background:#fafafa;">
-          <p><b>Name:</b> ${escapeHtml(data.fullName)}</p>
-          <p><b>Email:</b> ${escapeHtml(data.email)}</p>
-          <p><b>Phone:</b> ${escapeHtml(data.phone)}</p>
-          <p><b>Unit Type:</b> ${escapeHtml(data.unitType)}</p>
-          <p><b>Timeline:</b> ${escapeHtml(data.buyTimeline)}</p>
-          <p><b>Message:</b><br/>${escapeHtml(data.message).replace(/\n/g, "<br/>")}</p>
-        </div>
-        <p style="margin-top:14px;color:#666;font-size:12px;">Submitted from landing page.</p>
-      </div>
-    `;
+    // Validate required fields
+    if (
+      !fullName ||
+      !email ||
+      !phone ||
+      !unitType ||
+      !buyTimeline ||
+      !message
+    ) {
+      return NextResponse.json(
+        { success: false, message: "Missing required fields" },
+        { status: 400 },
+      );
+    }
 
-    await transporter.sendMail({
-      from: `"Mohamad Kodmani Real Estate" <${process.env.EMAIL_USER}>`,
-      to: adminEmail,
-      subject,
-      html,
-      replyTo: data.email,
-    });
+    // Get cached transporter
+    const transporter = createTransporter();
 
-    // Optional: user auto-reply
-    await transporter.sendMail({
-      from: `"Mohamad Kodmani Real Estate" <${process.env.EMAIL_USER}>`,
-      to: data.email,
-      subject: "Thank you — we received your request",
-      html: `
-        <div style="font-family: Arial; max-width: 640px; margin: 0 auto; padding: 20px;">
-          <h2 style="margin:0 0 10px;color:#111;">Thank you, ${escapeHtml(data.fullName)}!</h2>
+    // Verify connection (adds ~0.5s but ensures reliability)
+    await transporter.verify();
+
+    // Send both emails in parallel
+    await Promise.all([
+      // Admin email
+      transporter.sendMail({
+        from: `"Mohamad Kodmani" <${process.env.EMAIL_USER}>`,
+        to: process.env.ADMIN_EMAIL,
+        subject: `New Consultation Request - ${unitType}`,
+        html: `
+          <h3>New Consultation Request</h3>
+          <p><strong>Name:</strong> ${fullName}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Phone:</strong> ${phone}</p>
+          <p><strong>Unit Type:</strong> ${unitType}</p>
+          <p><strong>Timeline:</strong> ${buyTimeline}</p>
+          <p><strong>Message:</strong><br/>${message}</p>
+        `,
+      }),
+      // Auto-reply
+      transporter.sendMail({
+        from: `"Mohamad Kodmani" <${process.env.EMAIL_USER}>`,
+        to: email,
+        subject: "We received your consultation request",
+        html: `
+          <h3>Thank you ${fullName}</h3>
           <p>We received your request and will contact you within 24 hours.</p>
-          <p style="color:#666;font-size:12px;margin-top:16px;">This is an automated email.</p>
-        </div>
-      `,
-    });
+          <p>Best regards,<br>Mohamad Kodmani Team</p>
+        `,
+      }),
+    ]);
 
-    return NextResponse.json({ success: true });
-  } catch (e) {
+    // Calculate elapsed time
+    const elapsed = Date.now() - start;
+    console.log(`✅ Processed in ${elapsed}ms`);
+
+    // Add small delay if too fast (ensures minimum 1.5s total)
+    if (elapsed < 1500) {
+      await new Promise((resolve) => setTimeout(resolve, 1500 - elapsed));
+    }
+
+    return NextResponse.json({ success: true }, { status: 200 });
+  } catch (error) {
+    console.error("❌ Error:", error);
+
+    // Calculate elapsed time even for errors
+    const elapsed = Date.now() - start;
+    if (elapsed < 1500) {
+      await new Promise((resolve) => setTimeout(resolve, 1500 - elapsed));
+    }
+
     return NextResponse.json(
       { success: false, message: "Server error" },
       { status: 500 },
     );
   }
-}
-
-function escapeHtml(str) {
-  return String(str)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
 }

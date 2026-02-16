@@ -1,227 +1,153 @@
-.wrap {
+.formWrap {
   width: 100%;
-}
-
-.toast {
-  margin-bottom: 10px;
-  padding: 10px 12px;
-  border-radius: 12px;
-  font-size: 13px;
-  border: 1px solid rgba(201, 162, 106, 0.25);
-  background: rgba(0, 0, 0, 0.45);
-}
-
-.toastOk {
-  border-color: rgba(90, 200, 120, 0.3);
-}
-
-.toastErr {
-  border-color: rgba(255, 90, 90, 0.35);
-}
-
-.form {
-  display: grid;
-  gap: 12px;
-}
-
-.label {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.72);
-  display: grid;
-  gap: 6px;
-}
-
-.req {
-  color: rgba(201, 162, 106, 0.95);
-  margin-inline-start: 6px;
-}
-
-.input,
-.select,
-.textarea {
-  width: 100%;
-  border-radius: 12px;
-  border: 1px solid rgba(201, 162, 106, 0.18);
-  background: rgba(255, 255, 255, 0.03);
-  padding: 12px 12px;
-  color: rgba(255, 255, 255, 0.92);
-  outline: none;
-}
-
-.input::placeholder,
-.textarea::placeholder {
-  color: rgba(255, 255, 255, 0.45);
-}
-
-.input:focus,
-.select:focus,
-.textarea:focus {
-  border-color: rgba(201, 162, 106, 0.55);
-  box-shadow: 0 0 0 3px rgba(201, 162, 106, 0.12);
-}
-
-.select {
-  appearance: none;
-}
-
-.textarea {
-  resize: vertical;
-  min-height: 96px;
-}
-
-.actions {
-  margin-top: 4px;
   display: grid;
   gap: 10px;
-}
-
-.submit {
-  height: 46px;
-  border: 0;
-  border-radius: 12px;
-  cursor: pointer;
-  font-weight: 900;
-  letter-spacing: 0.5px;
-  color: #121212;
-  background: linear-gradient(180deg, #d9b67a, #a27b43);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
-}
-
-.submit:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-
-.wa {
-  height: 44px;
-  border-radius: 12px;
-  display: grid;
-  place-items: center;
-  border: 1px solid rgba(201, 162, 106, 0.25);
-  background: rgba(255, 255, 255, 0.03);
-  color: rgba(255, 255, 255, 0.9);
-}
-.wrap {
-  width: 100%;
   box-sizing: border-box;
-}
-
-.toast {
-  margin-bottom: 10px;
-  padding: 10px 12px;
-  border-radius: 12px;
-  font-size: 13px;
-  border: 1px solid rgba(201, 162, 106, 0.25);
-  background: rgba(0, 0, 0, 0.45);
-}
-
-.toastOk {
-  border-color: rgba(90, 200, 120, 0.35);
-}
-
-.toastErr {
-  border-color: rgba(255, 90, 90, 0.38);
+  padding: 22px;
+  text-align: left;
 }
 
 .head {
   text-align: center;
-  padding: 8px 0 10px;
+  padding-bottom: 14px;
 }
 
 .headTitle {
-  font-size: 22px; /* smaller */
+  font-size: 26px;
   font-weight: 900;
-  line-height: 1.15;
 }
 
 .headTitleAr {
-  margin-top: 4px;
-  font-size: 18px; /* smaller */
+  margin-top: 6px;
+  font-size: 20px;
   font-weight: 900;
   color: rgba(255, 255, 255, 0.9);
-  line-height: 1.15;
 }
 
 .divider {
   height: 1px;
-  background: rgba(201, 162, 106, 0.22);
-  margin: 8px 0 14px; /* smaller */
-}
-
-.form {
-  display: grid;
-  gap: 10px; /* smaller gaps */
+  background: rgba(201, 162, 106, 0.25);
+  margin: 10px 0 18px;
 }
 
 .label {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.78);
-  display: grid;
-  gap: 6px;
+  display: block;
+  margin-top: 14px;
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .req {
-  color: rgba(201, 162, 106, 0.95);
-  margin-inline-start: 6px;
+  color: #ff5a5a;
+  margin-left: 4px;
+}
+
+[dir="rtl"] .req {
+  margin-left: 0;
+  margin-right: 4px;
 }
 
 .input,
-.select,
 .textarea {
   width: 100%;
-  box-sizing: border-box;
-  border-radius: 12px;
-  border: 1px solid rgba(201, 162, 106, 0.18);
-  background: rgba(255, 255, 255, 0.03);
-  padding: 11px 12px; /* smaller */
-  color: rgba(255, 255, 255, 0.92);
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(201, 162, 106, 0.35);
+  color: white;
   outline: none;
-}
-
-.input::placeholder,
-.textarea::placeholder {
-  color: rgba(255, 255, 255, 0.45);
+  box-sizing: border-box;
+  font-size: 16px;
 }
 
 .input:focus,
-.select:focus,
-.textarea:focus {
+.textarea:focus,
+.select:focus {
   border-color: rgba(201, 162, 106, 0.55);
   box-shadow: 0 0 0 3px rgba(201, 162, 106, 0.12);
 }
 
+/* Select wrapper for custom arrow */
+.selectWrapper {
+  position: relative;
+  width: 100%;
+}
+
 .select {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(201, 162, 106, 0.35);
+  color: white;
+  outline: none;
+  box-sizing: border-box;
+  font-size: 16px;
   appearance: none;
   cursor: pointer;
+  padding-left: 40px; /* Make space for left arrow */
+}
+
+[dir="rtl"] .select {
+  padding-left: 16px;
+  padding-right: 40px;
+}
+
+.selectArrow {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #c9a26a;
+  font-size: 14px;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+[dir="rtl"] .selectArrow {
+  left: auto;
+  right: 12px;
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* For RTL, we want the arrow still on the left visually,
+   so we need to adjust based on direction */
+[dir="rtl"] .selectWrapper .selectArrow {
+  left: 12px;
+  right: auto;
+  transform: translateY(-50%) rotate(180deg);
 }
 
 .textarea {
   resize: vertical;
-  min-height: 92px; /* smaller */
+  min-height: 120px;
 }
 
 .note {
-  margin-top: 2px;
+  margin-top: 10px;
   color: rgba(255, 255, 255, 0.55);
-  font-size: 12px;
-}
-
-.actions {
-  margin-top: 4px;
-  display: grid;
-  gap: 10px;
+  font-size: 13px;
 }
 
 .submit {
-  height: 44px; /* smaller */
-  border: 0;
-  border-radius: 12px;
+  width: 100%;
+  margin-top: 18px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  border: none;
   cursor: pointer;
   font-weight: 900;
   letter-spacing: 0.5px;
-  color: #121212;
+  color: #0b0b0b;
   background: linear-gradient(180deg, #d9b67a, #a27b43);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+  font-size: 16px;
+  transition: opacity 0.3s;
+}
+
+.submit:hover:not(:disabled) {
+  opacity: 0.9;
 }
 
 .submit:disabled {
@@ -229,20 +155,91 @@
   cursor: not-allowed;
 }
 
-/* Mobile: keep it inside the screen */
-@media (max-width: 420px) {
+/* Success state styles */
+.successContainer {
+  padding: 40px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+}
+
+.successIcon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 20px;
+  background: linear-gradient(180deg, #d9b67a, #a27b43);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: #0b0b0b;
+  font-weight: bold;
+}
+
+.successTitle {
+  font-size: 24px;
+  font-weight: 900;
+  margin-bottom: 10px;
+  color: #d9b67a;
+}
+
+.successMessage {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.submitAnother {
+  padding: 12px 24px;
+  border-radius: 14px;
+  border: 1px solid rgba(201, 162, 106, 0.35);
+  background: transparent;
+  color: #d9b67a;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.submitAnother:hover {
+  background: rgba(201, 162, 106, 0.1);
+  border-color: #c9a26a;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .formWrap {
+    padding: 16px;
+  }
+
   .headTitle {
-    font-size: 20px;
+    font-size: 22px;
   }
+
   .headTitleAr {
-    font-size: 16px;
+    font-size: 18px;
   }
-  .form {
-    gap: 9px;
-  }
+
   .input,
   .select,
   .textarea {
-    padding: 10px 11px;
+    padding: 12px 14px;
+    padding-left: 36px;
+  }
+
+  .selectArrow {
+    left: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .formWrap {
+    padding: 12px;
+  }
+
+  .successContainer {
+    padding: 30px 20px;
   }
 }

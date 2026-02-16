@@ -9,8 +9,8 @@
 .hero {
   position: relative;
   width: 100%;
-  height: 600px; /* TALLER HERO */
-  overflow: visible; /* IMPORTANT */
+  height: 600px;
+  overflow: visible;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -23,7 +23,6 @@
   background-image: url("/banner.png");
   background-size: cover;
   background-position: center;
-  /* filter: brightness(0.7); */
 }
 
 /* Dark overlay for depth */
@@ -42,7 +41,7 @@
 
 .avatarWrapper {
   position: absolute;
-  bottom: -180px; /* pushes avatar out */
+  bottom: -180px;
   z-index: 5;
   display: flex;
   justify-content: center;
@@ -66,17 +65,14 @@
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
-
-  /* This makes the head appear to rise higher */
   object-position: center top;
-
   border: 6px solid #050505;
 }
 
 /* ================= PROFILE SECTION ================= */
 
 .profileSection {
-  margin-top: 260px; /* enough space for big avatar */
+  margin-top: 260px;
   text-align: center;
   padding: 0 20px 80px;
 }
@@ -112,6 +108,7 @@
   background: rgba(0, 0, 0, 0.4);
   font-size: 13px;
   font-weight: 700;
+  backdrop-filter: blur(5px);
 }
 
 .dot {
@@ -121,15 +118,103 @@
   border-radius: 50%;
 }
 
+/* ================= WEBSITE CARD ================= */
+
+.websiteCard {
+  margin: 30px auto 20px;
+  max-width: 780px;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.cardGlow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(201, 162, 106, 0.2),
+    rgba(162, 123, 67, 0.1),
+    rgba(201, 162, 106, 0.2)
+  );
+  filter: blur(20px);
+  opacity: 0.7;
+}
+
+.cardContent {
+  position: relative;
+  background: rgba(5, 5, 5, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(201, 162, 106, 0.4);
+  border-radius: 20px;
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.cardLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cardLabel {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.65);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cardDomain {
+  font-size: 24px;
+  font-weight: 800;
+  color: #c9a26a;
+  letter-spacing: -0.5px;
+}
+
+.cardLink {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(180deg, #c9a26a, #a27b43);
+  color: #0b0b0b;
+  font-weight: 800;
+  padding: 12px 28px;
+  border-radius: 40px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 4px 15px rgba(201, 162, 106, 0.3);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.cardLink:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(201, 162, 106, 0.5);
+}
+
+.cardArrow {
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+.cardLink:hover .cardArrow {
+  transform: translateX(5px);
+}
+
 /* ================= FORM CARD ================= */
 
 .card {
-  margin: 40px auto 0;
+  margin: 20px auto 0;
   max-width: 780px;
   border-radius: 22px;
   border: 1px solid rgba(201, 162, 106, 0.3);
   background: rgba(0, 0, 0, 0.5);
   box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
   overflow: hidden;
 }
 
@@ -151,5 +236,46 @@
 
   .profileSection {
     margin-top: 160px;
+  }
+
+  .cardContent {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  .cardDomain {
+    font-size: 20px;
+  }
+
+  .cardLink {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .profileSection {
+    padding: 0 16px 60px;
+  }
+
+  .metaRow {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 8px 12px;
+    gap: 10px;
+  }
+
+  .cardDomain {
+    font-size: 18px;
+  }
+
+  .cardLabel {
+    font-size: 12px;
+  }
+
+  .cardContent {
+    padding: 16px;
   }
 }

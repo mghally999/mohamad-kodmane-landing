@@ -10,88 +10,72 @@ import { useLanguage } from "./LanguageProvider";
 export default function LandingPage() {
   const { locale, isRTL, setLocale } = useLanguage();
 
-  // From your screenshots:
-  // IG 1,926 + YouTube 9,200 (9.2K) + FB 227 = 11,353
   const combinedFollowers = "11,353+";
 
   const t = {
     en: {
       name: "Mohamad Kodmani",
-      title: "Luxury Real Estate Consultant • Dubai, UAE",
-      book: "Book your consultation now",
-      bookAr: "احجز استشارتك الآن",
+      title: "CEO & Founder • Mohamad Kodmani Real Estate Brokers LLC",
       footer: `© ${new Date().getFullYear()} Mohamad Kodmani. All rights reserved.`,
       toggle: "AR",
     },
     ar: {
       name: "محمد قضماني",
-      title: "مستشار عقارات فاخرة • دبي، الإمارات",
-      book: "احجز استشارتك الآن",
-      bookAr: "Book your consultation now",
+      title: "الرئيس التنفيذي • محمد قضماني للوساطة العقارية",
       footer: `© ${new Date().getFullYear()} محمد قضماني. جميع الحقوق محفوظة.`,
       toggle: "EN",
     },
   }[locale];
 
   return (
-    <main className={styles.page}>
-      <div className={styles.heroBg} aria-hidden="true" />
+    <main className={styles.page} dir={isRTL ? "rtl" : "ltr"}>
+      {/* HERO BANNER */}
+      <section className={styles.hero}>
+        {/* Banner Image */}
+        <div className={styles.banner} />
 
-      <header className={styles.topBar}>
-        <div className={styles.brand}>mohamadkodmani.ae</div>
-
+        {/* Language Toggle (TOP LEFT ON BANNER) */}
         <button
           type="button"
           className={styles.langBtn}
           onClick={() => setLocale(locale === "en" ? "ar" : "en")}
-          aria-label="Toggle language"
         >
           {t.toggle}
         </button>
-      </header>
 
-      <section className={styles.hero}>
-        <div className={styles.profileWrap}>
-          <div className={styles.profileRing}>
-            <div className={styles.profileInner}>
-              <Image
-                src="/mr-mohamad-avatar.jpeg"
-                alt={t.name}
-                fill
-                sizes="220px"
-                className={styles.profileImg}
-                priority
-              />
-            </div>
+        {/* Avatar */}
+        <div className={styles.avatarWrapper}>
+          <div className={styles.avatarRing}>
+            <Image
+              src="/mr-mohamad-avatar.jpeg"
+              alt={t.name}
+              fill
+              className={styles.avatar}
+              sizes="280px"
+              priority
+            />
           </div>
         </div>
+      </section>
 
-        <h1 className={styles.name}>{t.name}</h1>
+      {/* PROFILE INFO */}
+      <section className={styles.profileSection}>
+        <h1 className={styles.name}>
+          {t.name} <span className={styles.badge}>✓</span>
+        </h1>
+
         <p className={styles.subTitle}>{t.title}</p>
 
         <SocialLinks />
 
         <div className={styles.metaRow}>
-          <span className={styles.metaItem}>
-            ★ {combinedFollowers} Followers
-          </span>
+          <span>★ {combinedFollowers} Followers</span>
           <span className={styles.dot} />
-          <span className={styles.metaItem}>Dubai, United Arab Emirates</span>
+          <span>Dubai, United Arab Emirates</span>
         </div>
 
         <div className={styles.formCard}>
-          <div className={styles.formHead}>
-            <div className={styles.formTitle}>{t.book}</div>
-            <div className={styles.formTitleAr}>{t.bookAr}</div>
-          </div>
-
           <ConsultationForm />
-
-          <div className={styles.formNote}>
-            {isRTL
-              ? "نؤكد أن بياناتك ستكون محمية."
-              : "We assure that your data will be protected."}
-          </div>
         </div>
       </section>
 

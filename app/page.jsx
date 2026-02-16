@@ -40,6 +40,26 @@ export default function Page() {
           <span>Dubai, United Arab Emirates</span>
         </div>
 
+        {/* WEBSITE BANNER - NEW */}
+        <div className={styles.websiteCard}>
+          <div className={styles.cardGlow} />
+          <div className={styles.cardContent}>
+            <div className={styles.cardLeft}>
+              <span className={styles.cardLabel}>Visit our website</span>
+              <span className={styles.cardDomain}>mohamadkodmani.ae</span>
+            </div>
+            <a
+              href="https://mohamadkodmani.ae"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.cardLink}
+            >
+              <span>Explore</span>
+              <span className={styles.cardArrow}>→</span>
+            </a>
+          </div>
+        </div>
+
         <div className={styles.card}>
           <ConsultationForm />
         </div>
