@@ -6,11 +6,6 @@ import { Instagram, Youtube, Linkedin, Facebook } from "lucide-react";
 export default function SocialLinks() {
   const links = [
     {
-      label: "LinkedIn",
-      href: "https://www.linkedin.com/company/mkrealestate-ae/",
-      Icon: Linkedin,
-    },
-    {
       label: "Instagram",
       href: "https://www.instagram.com/mohamadkodmane/",
       Icon: Instagram,
@@ -24,6 +19,11 @@ export default function SocialLinks() {
       label: "YouTube",
       href: "https://www.youtube.com/@Mohamad.Kodmane",
       Icon: Youtube,
+    },
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/company/mkrealestate-ae/",
+      Icon: Linkedin,
     },
   ];
 
