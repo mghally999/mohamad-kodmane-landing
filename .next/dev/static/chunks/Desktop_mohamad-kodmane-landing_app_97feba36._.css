@@ -200,6 +200,10 @@
 }
 
 @media (max-width: 768px) {
+  .page-module__G6q5Wa__cardContent {
+    align-items: center !important;
+  }
+
   .page-module__G6q5Wa__hero {
     height: 420px;
   }

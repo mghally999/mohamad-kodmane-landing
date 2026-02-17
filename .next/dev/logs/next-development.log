@@ -1,42 +1,4 @@
-[00:00:00.482] Server  LOG     ✓ Ready in 331ms
-[00:00:02.782] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:09.962] Server  LOG     📧 CONTACT FORM CALLED
-[00:00:09.963] Server  LOG     Incoming Data: {}
-[00:00:13.896] Browser ERROR   Network error: {}
-[00:01:54.268] Server  LOG     ✓ Compiled in 111ms
-[00:01:58.667] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:02:06.534] Server  LOG     📧 CONTACT FORM CALLED
-[00:02:06.536] Server  LOG     Incoming Data: {}
-[00:02:10.330] Browser LOG     Response status: 200
-[00:02:10.330] Browser LOG     Response data: {"success":true}
-[00:02:10.330] Browser ERROR   Network error: {}
-[00:04:25.324] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:04:39.418] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:04:50.775] Server  LOG     📧 CONTACT FORM CALLED
-[00:04:50.777] Server  LOG     Incoming Data: {}
-[00:04:54.371] Browser LOG     Response status: 200
-[00:04:54.371] Browser LOG     Response data: {"success":true}
-[00:04:54.372] Browser ERROR   Network error: {}
-[00:06:14.654] Server  LOG     ✓ Compiled in 134ms
-[00:06:16.900] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:06:22.991] Server  LOG     📧 CONTACT FORM CALLED
-[00:06:22.992] Server  LOG     Incoming Data: {}
-[00:06:45.064] Browser ERROR   Network error: {}
-[00:08:23.202] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:08:29.585] Server  ERROR   ⨯ Detected default export in '[project]/Desktop/mohamad-kodmane-landing/app/api/contact/route.js'. Export a named export for each HTTP method instead.
-[00:08:29.586] Server  ERROR   ⨯ No HTTP methods exported in '[project]/Desktop/mohamad-kodmane-landing/app/api/contact/route.js'. Export a named export for each HTTP method.
-[00:08:29.693] Browser ERROR   Network error: {"message":"Failed to execute 'json' on 'Response': Unexpected end of JSON input"}
-[00:08:53.386] Server  LOG     ✓ Compiled in 69ms
-[00:08:59.713] Server  LOG     ✓ Compiled in 49ms
-[00:09:07.903] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:09:14.026] Server  LOG     ✅ Response sent in 10ms
-[00:09:14.129] Browser ERROR   Network error: {}
-[00:11:51.548] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:12:00.201] Server  LOG     ✅ Processed in 2266ms
-[00:12:00.308] Browser ERROR   Network error: {}
-[00:14:26.224] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:18:47.606] Server  LOG     ✓ Compiled in 150ms
-[00:18:53.527] Server  LOG     ✓ Compiled in 11ms
-[00:21:13.320] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:22:45.638] Server  LOG     ✓ Compiled in 92ms
-[00:23:15.507] Server  LOG     ✓ Compiled in 43ms
+[00:00:00.761] Server  LOG     ✓ Ready in 546ms
+[00:00:02.558] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:58.321] Server  LOG     ✓ Compiled in 29ms
+[00:01:12.412] Server  LOG     ✓ Compiled in 4ms

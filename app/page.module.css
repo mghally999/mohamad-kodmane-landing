@@ -221,6 +221,10 @@
 /* ================= RESPONSIVE ================= */
 
 @media (max-width: 768px) {
+  .cardContent {
+    align-items: center !important;
+  }
+
   .hero {
     height: 420px;
   }
